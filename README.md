@@ -16,6 +16,7 @@ ASP.NET Core Razor Pages application for university course management
 ## Structure:
 
 OnlineCatalog/
+
 ├── Areas/
 
 │   └── Identity/
@@ -23,46 +24,87 @@ OnlineCatalog/
 │       └── Pages/
 
 │           └── Account/
+
 │               ├── Login.cshtml
+
 │               ├── Login.cshtml.cs
+
 │               ├── Register.cshtml
+
 │               └── Register.cshtml.cs
+
 ├── Data/
+
 │   ├── AppDbContext.cs
+
 │   └── RoleTypes.cs
+
 ├── Hubs/
+
 │   └── MessageHub.cs
+
 ├── Models/
+
 │   ├── ApplicationUser.cs
+
 │   ├── Course.cs
+
 │   ├── Enrollment.cs
+
 │   └── Notification.cs
+
 ├── Pages/
+
 │   ├── Courses/
+
 │   │   └── Search.cshtml (+.cs)
+
 │   ├── Moderator/
+
 │   │   └── Courses/
+
 │   │       └── Edit.cshtml (+.cs)
+
 │   ├── Professor/
+
 │   │   └── GradeBook.cshtml (+.cs)
+
 │   ├── Secretary/
+
 │   │   └── Export.cshtml (+.cs)
+
 │   └── Student/
+
 │       ├── Certificate.cshtml (+.cs)
+
 │       └── Courses.cshtml (+.cs)
+
 ├── Services/
+
 │   └── NotificationService.cs
+
 ├── wwwroot/
+
 │   └── css/
+
 │       └── site.css
+
 ├── Pages/
+
 │   └── Shared/
+
 │       ├── _Layout.cshtml
+
 │       ├── _LoginPartial.cshtml
+
 │       └── _ValidationScriptsPartial.cshtml
+
 ├── .gitignore
+
 ├── appsettings.json
+
 ├── Program.cs
+
 └── README.md (optional)
 
 ## Libraries:
