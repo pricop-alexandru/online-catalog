@@ -17,8 +17,11 @@ ASP.NET Core Razor Pages application for university course management
 
 OnlineCatalog/
 ├── Areas/
+
 │   └── Identity/
+
 │       └── Pages/
+
 │           └── Account/
 │               ├── Login.cshtml
 │               ├── Login.cshtml.cs
