@@ -1,0 +1,51 @@
+﻿@page
+@model Catalog_Online_Mitica_Pricop_Vasii.Pages.Courses.SearchModel
+@{
+    ViewData["Title"] = "Search Courses";
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <form method="get" class="row g-3 mb-4">
+        <div class="col-md-6">
+            <input asp-for="SearchTerm" class="form-control" placeholder="Search term..." />
+        </div>
+        <div class="col-md-4">
+            <select asp-for="SearchType" class="form-select">
+                <option value="name">Course Name</option>
+                <option value="professor">Professor</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>
+
+    @if (Model.Courses.Any())
+    {
+        <div class="row">
+            @foreach (var course in Model.Courses)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">@course.Title</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">@course.Professor?.FullName</h6>
+                            <p class="card-text">Academic Year: @course.AcademicYear</p>
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a href="#" class="btn btn-sm btn-outline-primary">Details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No courses found. Try a different search term.
+        </div>
+    }
+</div>

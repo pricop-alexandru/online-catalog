@@ -1,0 +1,45 @@
+﻿## Ignore Visual Studio temporary files
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+*.log
+*.sql
+*.bak
+*.nupkg
+packages/
+TestResults/
+artifacts/
+
+## Ignore build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+
+## Ignore sensitive data
+appsettings.Development.json
+appsettings.Production.json
+secrets.json
+*.pem
+*.pfx
+
+## Ignore dependencies
+node_modules/
+jspm_packages/
+
+## Ignore IDE files
+.idea/
+.project
+.classpath
+*.launch
+*.sln.iml
+
+## Ignore runtime files
+*.DS_Store
+Thumbs.db
