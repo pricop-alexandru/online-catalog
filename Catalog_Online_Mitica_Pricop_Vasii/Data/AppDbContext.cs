@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Catalog_Online_Mitica_Pricop_Vasii.Models;
+using System.Reflection.Emit;
 
 namespace Catalog_Online_Mitica_Pricop_Vasii.Data
 {
@@ -15,6 +16,17 @@ namespace Catalog_Online_Mitica_Pricop_Vasii.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            foreach (var entityType in builder.Model.GetEntityTypes())
+            {
+                var properties = entityType.GetProperties()
+                    .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?));
+
+                foreach (var property in properties)
+                {
+                    property.SetColumnType("decimal(18,2)");
+                }
+            }
 
             builder.Entity<Enrollment>()
                 .HasOne(e => e.Student)
