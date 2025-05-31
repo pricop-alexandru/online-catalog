@@ -59,6 +59,10 @@ namespace Catalog_Online_Mitica_Pricop_Vasii.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
 
+            Console.WriteLine("Starting registration process...");
+            Console.WriteLine($"Email: {Input.Email}");
+            Console.WriteLine($"FullName: {Input.FullName}");
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
@@ -68,19 +72,30 @@ namespace Catalog_Online_Mitica_Pricop_Vasii.Areas.Identity.Pages.Account
                     FullName = Input.FullName
                 };
 
-                var result = await _userManager.CreateAsync(user, Input.Password);
-
-                if (result.Succeeded)
+                try
                 {
-                    // Assign default role (Student)
-                    await _userManager.AddToRoleAsync(user, "Student");
+                    var result = await _userManager.CreateAsync(user, Input.Password);
+                    Console.WriteLine($"User creation result: {result.Succeeded}");
 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
+                    if (result.Succeeded)
+                    {
+                        Console.WriteLine("Adding Student role...");
+                        await _userManager.AddToRoleAsync(user, "Student");
+
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return LocalRedirect(returnUrl);
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        Console.WriteLine($"Error: {error.Description}");
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
                 }
-                foreach (var error in result.Errors)
+                catch (Exception ex)
                 {
-                    ModelState.AddModelError(string.Empty, error.Description);
+                    Console.WriteLine($"EXCEPTION: {ex.Message}");
+                    ModelState.AddModelError(string.Empty, "An error occurred during registration.");
                 }
             }
             return Page();

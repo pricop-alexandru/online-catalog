@@ -15,7 +15,12 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Identity configuration
 builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = false;
+    options.SignIn.RequireConfirmedAccount = false; // Disable email confirmation
+    options.Password.RequireDigit = false;          // For testing only
+    options.Password.RequireLowercase = false;      // For testing only
+    options.Password.RequireNonAlphanumeric = false;// For testing only
+    options.Password.RequireUppercase = false;      // For testing only
+    options.Password.RequiredLength = 3;            // For testing only
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>();
