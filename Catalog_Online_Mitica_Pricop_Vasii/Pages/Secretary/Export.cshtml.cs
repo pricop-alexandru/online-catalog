@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Catalog_Online_Mitica_Pricop_Vasii.Data;
 
-namespace OnlineCatalog.Pages.Secretary
+namespace Catalog_Online_Mitica_Pricop_Vasii.Pages.Secretary
 {
     [Authorize(Roles = "Secretary")]
     public class ExportModel : PageModel

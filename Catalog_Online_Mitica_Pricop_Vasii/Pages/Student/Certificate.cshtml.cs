@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Catalog_Online_Mitica_Pricop_Vasii.Models;
 using System.Security.Claims;
 
-namespace OnlineCatalog.Pages.Student
+namespace Catalog_Online_Mitica_Pricop_Vasii.Pages.Student
 {
     [Authorize(Roles = "Student")]
     public class CertificateModel : PageModel

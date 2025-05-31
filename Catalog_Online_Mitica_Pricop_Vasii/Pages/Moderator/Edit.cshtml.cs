@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace Catalog_Online_Mitica_Pricop_Vasii.Pages.Moderator.Courses
+namespace Catalog_Online_Mitica_Pricop_Vasii.Pages.Moderator
 {
     [Authorize(Roles = "Moderator")]
     public class EditModel : PageModel
